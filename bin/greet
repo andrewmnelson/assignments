@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+var greet = require(__dirname + '/../lib/greet');
+console.log(greet(process.argv[2]));  // [0] === 'node', [1] === 'greet'
