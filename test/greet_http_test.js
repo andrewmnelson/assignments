@@ -38,15 +38,24 @@ describe("greet-http", function() {
         done();
       });
   });
-  it ("handles POST request greeting", function(done) {
+});
+describe("greet POST request", function(done) {
+  var err;
+  var resp;
+  beforeEach(function() {
     chai.request(greetHttp)
-      .post("/greet")
-      .send( { name: "My Funky Friend" } )
-      .end( function(err, resp) {
-        expect(err).to.be.null;
-        expect(resp).to.have.status(200);
-        expect(resp.text).to.eql("hello My Funky Friend");
-        done();
-      });
+    .post("/greet")
+    .send( { name: "'My Funky Friend'" } )
+    .end( function(e, r) {
+      console.log("end: ", e, r.text);
+      err = e;
+      resp = r;
+      done();
+    });
+  });
+  it ("handles POST request greeting", function() {
+    expect(err).to.be.null;
+    expect(resp).to.have.status(200);
+    expect(resp.text).to.eql("hello My Funky Friend");
   });
 });
