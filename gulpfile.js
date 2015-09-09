@@ -10,7 +10,7 @@ gulp.task('jshint', function() {
   // with tests you have helpfully coded for their benefit :-)
 
   // the ** glob specifies all subdirectories
-  return gulp.src(['index.js', 'bin/greet', 'test/**/*.js', 'lib/**/*.js'])
+  return gulp.src(['index.js', 'test/**/*.js', 'lib/**/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
  });
